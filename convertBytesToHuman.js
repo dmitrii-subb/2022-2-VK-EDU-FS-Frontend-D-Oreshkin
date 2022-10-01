@@ -23,7 +23,6 @@ export default function convertBytesToHuman(bytes) {
   let order = 1;
   for (order; order <= 40; order++) {
     if (bytes <= (2 ** order)) {
-      //order -= 1;
       break
     }
   }
