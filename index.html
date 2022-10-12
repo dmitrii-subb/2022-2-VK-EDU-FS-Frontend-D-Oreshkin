@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head lang="en">
         <meta charset="UTF-8">
         <title>Send a message</title>
@@ -7,18 +8,20 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     </head>
+
     <body>
+
         <header>
             <button class="back-button" type="">
                 <span class="material-icons">arrow_back</span>
             </button>
-            <div class="companion">
+            <section class="companion">
                 <img class="companion-picture" src="https://via.placeholder.com/50" alt="profile_pic">
                 <div class="companion-meta">
-                    <div class="companion-name">Dmitrii</div>
-                    <div class="companion-last-online">was 1 hour ago</div>
+                    <span class="companion-name">Dmitrii</span>
+                    <span class="companion-last-online">was 1 hour ago</span>
                 </div>
-            </div>
+            </section>
             <button class="search-button" type="">
                 <span class="material-icons">search</span>
             </button>
@@ -27,14 +30,14 @@
             </button>
         </header>
 
-        <div class="chat">
+        <section class="chat">
             <div class="message left">
-                <div class="message-text">hello, world!</div>
+                <span class="message-text">hello, world!</span>
                 <div class="message-meta">
-                    <div class="message-date">10:10</div>
+                    <span class="message-date">10:10</span>
                 </div>
             </div>
-        </div>
+        </section>
 
         <form class="form" action="/">
             <input class="form-input" name="message-text" placeholder="Cообщение" type="textarea">
