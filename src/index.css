@@ -124,6 +124,9 @@ input[type=submit] {
     align-items: center;
 }
 
+.companion-picture {
+    border-radius: 50%;
+}
 .companion-meta {
     display: flex;
     gap: 5px;
