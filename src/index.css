@@ -1,0 +1,143 @@
+html {
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    height: 80px;
+    background-color: #8e24aa;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    flex-basis: 100px;
+    overflow-y: auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evently;
+    width: 100%;
+    border-top: 1px solid #dedede;
+}
+
+.message { 
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: #f3e5f5;
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;
+    margin: 8px;
+    padding: 16px 20px 0px 16px;
+    word-break:break-all;
+}
+
+.left {
+    margin-left: 20px;
+    align-self: flex-start;
+    background-color: white;
+}
+
+.right {
+    margin-right: 20px;
+    align-self: flex-end;
+    background-color: #f3e5f5;
+}
+
+.message-text {
+    align-self: flex-end;
+    font-size: 15px;
+}
+
+.message-meta {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+}
+
+.message-date {
+    color: #787179;
+}
+
+.message-state {
+    color: #9736b0;
+}
+
+input[type=submit] {
+    visibility: collapse;
+}
+
+.form-input {
+    border: 0;
+    font-size: 15px;
+    outline: none;
+    height: 60px;
+    padding-left: 15px;
+    width: calc(100% - 2px);
+}
+
+.add-document-btn {
+    background-color: white;
+    color: #6e6e6e;
+    border: 0;
+    padding-right: 15px;
+    flex-basis: 60px;
+}
+
+.back-button,
+.search-button,
+.more-button {
+    background-color: #8e24aa;
+    color: white;
+    border: 0;
+    flex-basis: 60px;
+}
+
+.companion {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    gap: 15px;
+    color: white;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.companion-picture {
+    border-radius: 50%;
+}
+.companion-meta {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.companion-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.companion-last-online {
+    color: #c590d3;
+}
