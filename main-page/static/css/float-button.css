@@ -1,0 +1,10 @@
+.float-button {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #f9d667;
+    bottom: 25px;
+    right: 25px;
+}

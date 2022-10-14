@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    height: 80px;
+    background-color: #8e24aa;
+}
+
+.back-button,
+.search-button,
+.more-button {
+    background-color: #8e24aa;
+    color: white;
+    border: 0;
+    flex-basis: 60px;
+}
+
+.companion {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    gap: 15px;
+    color: white;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.companion-picture {
+    border-radius: 50%;
+}
+.companion-meta {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.companion-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.companion-last-online {
+    color: #c590d3;
+}
