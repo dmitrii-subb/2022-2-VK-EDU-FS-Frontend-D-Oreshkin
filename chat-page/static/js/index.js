@@ -1,15 +1,33 @@
-//import './index.css';
-
 const form = document.querySelector('form');
 const input = document.querySelector('.form-input');
 const chat = document.querySelector('.chat')
+const back_button = document.querySelector('.back-button')
 
-form.addEventListener('submit', this.handleSubmit.bind(this));
-document.addEventListener('DOMContentLoaded', this.getMesagesFromLocalStorage.bind(this))
+form.addEventListener('submit', handleSubmit.bind(this));
+document.addEventListener('DOMContentLoaded', getMesagesFromLocalStorage.bind(this))
+back_button.addEventListener('click', goToMainPage.bind(this))
+
+function goToMainPage(event) {
+  // заглушка
+  window.location.href = '../main-page/index.html';
+}
+
+function checkLocalStorageAvailable() {
+  try {
+    localStorage.setItem('test', 'text');
+    localStorage.getItem('test');
+  } catch (err) {
+    return false;
+  }
+  return true;
+}
 
 function getMesagesFromLocalStorage () {
+  if (!checkLocalStorageAvailable) {
+    return
+  }
   let messages = localStorage.getItem('messages');
-  if (messages == '' || messages == null) {
+  if (!messages) {
     return
   } 
   messages = JSON.parse(messages);
@@ -19,12 +37,18 @@ function getMesagesFromLocalStorage () {
 }
 
 function saveMessageToLocalStorage (message) {
+  if (!checkLocalStorageAvailable) {
+    return
+  }
   let messages = localStorage.getItem('messages');
   if (messages == '' || messages == null) {
     localStorage.setItem('messages', JSON.stringify({'all':[]}));
   }
   messages = localStorage.getItem('messages');
   messages = JSON.parse(messages);
+  if (messages == undefined) {
+    return
+  }
   messages.all.push(message);
   localStorage.setItem('messages', JSON.stringify(messages));
 }
@@ -32,7 +56,6 @@ function saveMessageToLocalStorage (message) {
 function createMessageBlock (message, save=true) {
     let message_block = document.createElement('div');
     message_block.className = 'message right';
-    //message_block.innerText = message.text;
      
     let message_text = document.createElement('div');
     message_text.className = "message-text";
@@ -63,14 +86,17 @@ function createMessageBlock (message, save=true) {
 
 function handleSubmit (event) {
     event.preventDefault();
+    const input = event.target.querySelector('.form-input');
     let time = new Date();
     let message = {
       'text': input.value,
       'date': `${time.getHours()}:${time.getMinutes()}`,
       'sender_name': 'Dmitrii Oreshkin' 
     };
-    createMessageBlock(message);
-    input.value = '';
+    if (input.value) {
+      createMessageBlock(message);
+      input.value = '';
+    }
 }
 
 function handleKeyPress (event) {

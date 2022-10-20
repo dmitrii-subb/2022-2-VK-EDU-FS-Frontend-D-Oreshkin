@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <title>Messenger</title>
+        <link rel="stylesheet" href="static/css/page.css">
+        <link rel="stylesheet" href="static/css/header.css">
+        <link rel="stylesheet" href="static/css/chats.css">
+        <link rel="stylesheet" href="static/css/float-button.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    </head>
+
+    <body>
+
+        <header> 
+            <button class="burger-button" type="">
+                <span class="material-icons">menu</span>
+            </button>
+            <div class="application-name">
+                <span>Messenger</span>
+            </div>
+            <button class="search-button" type="">
+                <span class="material-icons">search</span>
+            </button>
+        </header>
+
+        <article class="chats-container">
+              
+            <section class="chat" onclick="goToChat();">
+                <div class="chat-picture">
+                    <img class="picture" src="https://via.placeholder.com/60" alt="profile_pic">
+                </div>
+                <div class="chat-details">
+                    <span class="chat-name">Dmitrii Oreshkin</span>
+                    <span class="chat-last-message">hello, world</span>
+                </div>
+                <div class="chat-meta">
+                    <span class="last-message-time">13:39</span>
+                    <span class="message-state">99</span> 
+                </div>
+            </section>
+
+            <section class="chat" onclick="goToChat();">
+                <div class="chat-picture">
+                    <img class="picture" src="https://via.placeholder.com/60" alt="profile_pic">
+                </div>
+                <div class="chat-details">
+                    <span class="chat-name">Dmitrii Oreshkin 2</span>
+                    <span class="chat-last-message">hello, world 2</span>
+                </div>
+                <div class="chat-meta">
+                    <span class="last-message-time">20:05</span>
+                    <span class="message-state">99</span> 
+                </div>
+            </section>
+
+
+        </article>
+           
+        <button class="float-button">
+            <span class="material-icons">create</span>
+        </button>
+
+        <script src="static/js/index.js"></script>
+
+  </body>
+</html>
