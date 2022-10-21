@@ -1,3 +1,13 @@
+@keyframes fadein {
+    from {
+        opacity: 0; 
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .chat {
     display: flex;
     flex-direction: column-reverse;
@@ -16,6 +26,9 @@
     margin: 8px;
     padding: 16px 20px 0px 16px;
     word-break:break-all;
+
+    animation-duration: 1s;
+    animation-name: fadein;
 }
 
 .left {
@@ -49,4 +62,16 @@
 
 .message-state {
     color: #9736b0;
+}
+
+@media screen and (max-width: 500px) {
+    .message-text {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .message-text {
+        font-size: 20px;
+    }
 }

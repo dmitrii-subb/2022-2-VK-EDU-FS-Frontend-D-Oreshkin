@@ -12,10 +12,17 @@ header {
     padding-left: 10px;
 }
 
-.burger-button, .search-button {
+.burger-button, 
+.search-button {
     background-color: #8e24aa;
     color: #ffffff;
     border: 0;
     flex-basis: 60px;
+    transition: background-color 0.1s, color 0.1s;
 }
 
+.burger-button:hover, 
+.search-button:hover {
+   background-color: #d37ceb;
+   color: black;
+}

@@ -10,6 +10,15 @@
     flex-direction: row;
     color: black;
     background-color: white;
+    transition: background-color 0.2s, color 0.2s; 
+}
+
+.chat:hover {
+    background-color: #c6c3c7;
+}
+
+.chat:hover .chat-details, .chat-meta {
+    border-bottom: 0;
 }
 
 .chat-picture {
