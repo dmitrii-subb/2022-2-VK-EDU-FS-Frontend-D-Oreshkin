@@ -1,6 +1,7 @@
 header {
     display: flex;
     height: 80px;
+    min-width: 360px;
     background-color: #8e24aa;
 }
 
@@ -11,6 +12,14 @@ header {
     color: white;
     border: 0;
     flex-basis: 60px;
+    transition: background-color 0.1s, color 0.1s;
+}
+
+.back-button:hover,
+.search-button:hover,
+.more-button:hover {
+   background-color: #d37ceb;
+   color: black;
 }
 
 .companion {
@@ -33,10 +42,25 @@ header {
 }
 
 .companion-name {
-    font-size: 20px;
     font-weight: bold;
 }
 
 .companion-last-online {
     color: #c590d3;
 }
+
+@media screen and (max-width: 500px) {
+    .companion-name {
+        font-size: 15px;
+    }
+    .companion-last-online {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .companion-name {
+        font-size: 20px;
+    }
+}
+
