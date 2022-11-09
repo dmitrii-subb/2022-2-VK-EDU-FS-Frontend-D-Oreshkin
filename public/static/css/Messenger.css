@@ -1,0 +1,31 @@
+html {
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+.all-chats {
+    width: 500px;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.chat-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff9f3;
+        flex: 1 0 auto;
+}
+
+#root, .body {
+    display: flex;
+    margin: 0;
+    background-color: white;
+}
+
