@@ -39,6 +39,6 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0",
-    "homepage": "https://dmitrii-subb.github.io/react-chat"
+    "homepage": "https://dmitrii-subb.github.io"
   }
 }
