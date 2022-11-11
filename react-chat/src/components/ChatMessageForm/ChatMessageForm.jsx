@@ -14,7 +14,7 @@ function ChatMessageForm({sendMessage}) {
     function handleSubmit(event) {
         event.preventDefault();
 
-        if (value == '') {
+        if (value === '') {
             return;
         }
 
