@@ -10,7 +10,7 @@ function SidebarPage({openChat}) {
         <>
             <SidebarHeader />
             <SidebarBody openChat={openChat} />
-            {/* <FloatButton /> */}
+            <FloatButton />
         </>
     );
 }
