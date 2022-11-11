@@ -33,12 +33,12 @@ function saveMessageToLocalStorage (message) {
     return
   }
   let messages = localStorage.getItem('messages');
-  if (messages == '' || messages == null) {
+  if (messages === '' || messages == null) {
     localStorage.setItem('messages', JSON.stringify({'all':[]}));
   }
   messages = localStorage.getItem('messages');
   messages = JSON.parse(messages);
-  if (messages == undefined) {
+  if (messages === undefined) {
     return
   }
   messages.all.push(message);
