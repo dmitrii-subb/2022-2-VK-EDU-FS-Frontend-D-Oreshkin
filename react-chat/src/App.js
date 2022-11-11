@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import styles from './App.module.css';
 import { useState } from 'react'
 
@@ -20,7 +19,7 @@ function App() {
         <SidebarPage openChat={openChat}/>
       </aside>
       <section className={styles.chatPage}>
-        {chatId != 0 &&
+        {chatId !== 0 &&
           <ChatPage chatId={chatId}/>
         }
       </section>
