@@ -5,7 +5,7 @@ import styles from './ChatMessageForm.module.scss'
 
 function ChatMessageForm({sendMessage}) {
 
-    let [value, setValue] = useState('message');
+    const [value, setValue] = useState();
 
     function handleChange(event) {
         setValue(event.target.value);
