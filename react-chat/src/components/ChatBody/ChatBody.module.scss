@@ -1,0 +1,78 @@
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.chat {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-grow: 1;
+/*     flex: 2 0 auto; */
+    flex-basis: 100px;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: #f3e5f5;
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;
+    margin: 8px;
+    padding: 16px 20px 0px 16px;
+    word-break:break-all;
+
+    animation-duration: 1s;
+    animation-name: fadein;
+}
+
+.left {
+    margin-left: 20px;
+    align-self: flex-start;
+    background-color: white;
+}
+
+.right {
+    margin-right: 20px;
+    align-self: flex-end;
+    background-color: #f3e5f5;
+}
+
+.messageText {
+    align-self: flex-end;
+    font-size: 15px;
+}
+
+.messageMeta {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+}
+
+.messageDate {
+    color: #787179;
+}
+
+.messageState {
+    color: #9736b0;
+}
+
+@media screen and (max-width: 500px) {
+    .messageText {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .messageText {
+        font-size: 20px;
+    }
+}
