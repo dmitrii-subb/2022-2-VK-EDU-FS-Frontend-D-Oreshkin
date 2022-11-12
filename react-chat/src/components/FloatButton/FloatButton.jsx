@@ -1,12 +1,13 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import styles from './FloatButton.module.scss'
+
 
 function FloatButton() {
     return (
-        <button className="float-button">
+        <button className={styles.floatButton}>
             <span className="material-icons">create</span>
         </button>
     );
 }
 
-export default FloatButton;
+export { FloatButton };
