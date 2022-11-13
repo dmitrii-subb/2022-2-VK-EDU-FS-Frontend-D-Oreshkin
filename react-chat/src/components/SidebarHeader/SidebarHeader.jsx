@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const linkStyle = {
   alignSelf: "center",
+  touchAction: "auto",
 };
 
 function SidebarHeader() {
