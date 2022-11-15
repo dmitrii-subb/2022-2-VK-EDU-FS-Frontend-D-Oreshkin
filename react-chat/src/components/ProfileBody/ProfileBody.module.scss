@@ -1,0 +1,36 @@
+.profileBody {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    flex-grow: 2;
+    gap: 20px;
+}
+
+.userPicture {
+    margin-top: 20px;
+    align-self: center;
+    border-radius: 50%;
+}
+
+.fullName, .username, .bio {
+    display: flex;
+    margin: 0px 20px 0px 20px;
+    gap: 10px;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 2px solid gray;
+}
+
+.graybackground {
+    background-color: #ededed;
+}
+
+input, textarea {
+    outline:none;
+    border: none;
+}
+
+.fullName {
+
+}

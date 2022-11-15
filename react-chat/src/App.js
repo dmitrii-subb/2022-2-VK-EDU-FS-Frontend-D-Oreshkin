@@ -1,30 +1,30 @@
-import styles from './App.module.css';
-import { useState } from 'react'
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import { ChatPage } from './pages/ChatPage'
 import { SidebarPage } from './pages/SidebarPage'
+import { ProfilePage } from './pages/ProfilePage'
+
+import { Layout } from './pages/Layout'
+
 
 function App() {
 
-  let [chatId, setChatId] = useState(0)
+  let [chatId, setChatId] = useState(0);
 
   function openChat(id){
     setChatId(id);
   }
 
-
   return (
     <>
-      <aside className={styles.allChats}>
-        <SidebarPage openChat={openChat}/>
-      </aside>
-      <section className={styles.chatPage}>
-        {chatId !== 0 &&
-          <ChatPage chatId={chatId}/>
-        }
-      </section>
+      <Routes>
+        <Route path="/" element={<Layout chatId={chatId}/>}>
+          <Route index element={<SidebarPage openChat={openChat}/>} />
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
+      </Routes>
     </>
-  )
+  );
 }
 
 

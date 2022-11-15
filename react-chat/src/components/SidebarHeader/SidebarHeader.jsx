@@ -1,20 +1,28 @@
-import React from 'react'
-import styles from './SidebarHeader.module.scss'
+import React from "react";
+import styles from "./SidebarHeader.module.scss";
+import { Link } from "react-router-dom";
+
+const linkStyle = {
+  alignSelf: "center",
+  touchAction: "auto",
+};
 
 function SidebarHeader() {
-    return (
-        <header>
-            <button className={styles.burgerButton} type="">
-                <span className="material-icons">menu</span>
-            </button>
-            <div className={styles.applicationName}>
-                <span>Messenger</span>
-            </div>
-            <button className={styles.searchButton} type="">
-                <span className="material-icons">search</span>
-            </button>
-        </header>
-    );
+  return (
+    <header>
+      <Link style={linkStyle} to="/profile">
+        <button className={styles.burgerButton} type="">
+          <span className="material-icons">menu</span>
+        </button>
+      </Link>
+      <div className={styles.applicationName}>
+        <span>Messenger</span>
+      </div>
+      <button className={styles.searchButton} type="">
+        <span className="material-icons">search</span>
+      </button>
+    </header>
+  );
 }
 
 export { SidebarHeader };

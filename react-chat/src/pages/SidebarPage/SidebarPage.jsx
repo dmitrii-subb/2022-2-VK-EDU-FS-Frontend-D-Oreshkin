@@ -1,18 +1,19 @@
-import React from 'react'
+import React from "react";
 
-import { SidebarHeader } from '../../components/SidebarHeader'
-import { SidebarBody } from '../../components/SidebarBody'
-import { FloatButton } from '../../components/FloatButton'
+import { SidebarHeader } from "../../components/SidebarHeader";
+import { SidebarBody } from "../../components/SidebarBody";
+import { FloatButton } from "../../components/FloatButton";
 
-function SidebarPage({openChat}) {
+import styles from "./SidebarPage.module.scss";
 
-    return (
-        <>
-            <SidebarHeader />
-            <SidebarBody openChat={openChat} />
-            <FloatButton />
-        </>
-    );
+function SidebarPage({ openChat }) {
+  return (
+    <aside className={styles.allChats}>
+      <SidebarHeader />
+      <SidebarBody openChat={openChat} />
+      <FloatButton />
+    </aside>
+  );
 }
 
 export { SidebarPage };
