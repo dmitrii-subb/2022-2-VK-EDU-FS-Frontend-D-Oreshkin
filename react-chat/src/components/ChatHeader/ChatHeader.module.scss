@@ -1,14 +1,15 @@
-header {
+.header {
     display: flex;
     height: 80px;
     min-width: 360px;
-    background-color: #8e24aa;
+    background-color: #101315;
+    border-bottom: 1px solid #25272e;
 }
 
 .backButton,
 .searchButton,
 .moreButton {
-    background-color: #8e24aa;
+    background-color: #101315;
     color: white;
     border: 0;
     flex-basis: 60px;
@@ -28,7 +29,6 @@ header {
     flex-grow: 2;
     gap: 15px;
     color: white;
-    padding-left: 20px;
     align-items: center;
 }
 
@@ -46,7 +46,7 @@ header {
 }
 
 .companionLastOnline {
-    color: #c590d3;
+    color: #7f91a3;
 }
 
 @media screen and (max-width: 500px) {

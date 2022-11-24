@@ -1,0 +1,58 @@
+@import "../App.module.scss";
+
+
+.allChats {
+    flex-basis: 500px;
+    gap: 10px;
+    min-height: 100vh;
+    background-color: $sigeBackground;
+
+    @media screen and (max-width: 1000px) {
+        
+    }
+  
+    @media screen and (min-width: 1000px) {    
+    }
+}
+
+
+.profilePage {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 500px;
+    min-height: 100vh;
+    background-color: $sigeBackground;
+}
+
+.chatPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.ButtonsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70px;
+    background-color: #101315;
+    gap: 10px;
+}
+
+.button {
+    align-self: center;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #17212d;
+    color: #2295ff;
+}
+
+.button:hover {
+    background-color: #193450;
+}

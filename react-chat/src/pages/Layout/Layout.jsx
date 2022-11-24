@@ -1,14 +1,12 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import { ChatPage } from "../ChatPage";
-import styles from "../ChatPage/ChatPage.module.scss";
 
-function Layout({ chatId }) {
+function Layout({ chat }) {
   return (
     <>
       <Outlet />
-      <section className={styles.chatPage}>
-        {chatId !== 0 && <ChatPage chatId={chatId} />}
-      </section>
+      {chat.id && <ChatPage chat={chat} />}
     </>
   );
 }

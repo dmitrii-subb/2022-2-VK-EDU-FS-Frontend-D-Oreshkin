@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ChatHeader.module.scss";
 
-function ChatHeader() {
+function ChatHeader({ name }) {
   return (
     <header className={styles.header}>
       <section className={styles.companion}>
@@ -11,7 +11,7 @@ function ChatHeader() {
           alt="profile_pic"
         />
         <div className={styles.companionMeta}>
-          <span className={styles.companionName}>Dmitrii Oreshkin</span>
+          <span className={styles.companionName}>{name}</span>
           <span className={styles.companionLastOnline}>was 1 hour ago</span>
         </div>
       </section>
