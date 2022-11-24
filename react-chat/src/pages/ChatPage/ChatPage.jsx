@@ -8,20 +8,20 @@ import { ChatMessageForm } from "../../components/ChatMessageForm";
 import styles from "../pages.module.scss";
 // const API_URL = "https://tt-front.vercel.app";
 
-import { Centrifuge } from "centrifuge";
-const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
-const sub = centrifuge.newSubscription("chat");
+// import { Centrifuge } from "centrifuge";
+// const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
+// const sub = centrifuge.newSubscription("chat");
 
 function ChatPage({ chat }) {
   const [messages, setMessages] = useState([]);
 
-  function addMessagesToChat(ctx) {
-    setMessages((prev) => {
-      const newMessages = Object.assign([], prev);
-      newMessages.unshift(ctx.data.message);
-      return newMessages;
-    });
-  }
+//   function addMessagesToChat(ctx) {
+//     setMessages((prev) => {
+//       const newMessages = Object.assign([], prev);
+//       newMessages.unshift(ctx.data.message);
+//       return newMessages;
+//     });
+//   }
 
   useEffect(() => {
     // console.log("messages", messages);
@@ -34,7 +34,7 @@ function ChatPage({ chat }) {
           .then((resp) => resp.json())
           .then((data) => setMessages(data.reverse()));
       };
-      const t = setInterval(() => pollItems(), 3000);
+      setInterval(() => pollItems(), 3000);
 
       return;
     }
