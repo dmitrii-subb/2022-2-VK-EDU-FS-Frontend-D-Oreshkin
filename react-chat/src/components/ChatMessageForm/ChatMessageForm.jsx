@@ -1,40 +1,48 @@
-import React from 'react'
-import { useState } from 'react'
-import styles from './ChatMessageForm.module.scss'
+import React from "react";
+import { useState } from "react";
+import styles from "./ChatMessageForm.module.scss";
 
+function ChatMessageForm({ sendMessage, chat }) {
+  const [value, setValue] = useState("");
 
-function ChatMessageForm({sendMessage}) {
+  function handleChange(event) {
+    setValue(event.target.value);
+  }
 
-    const [value, setValue] = useState();
+  function handleSubmit(event) {
+    event.preventDefault();
 
-    function handleChange(event) {
-        setValue(event.target.value);
+    if (value === "") {
+      return;
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    let message = {
+      text: value,
+      chat_id: chat.id,
+      // date: `${time.getHours()}:${time.getMinutes()}`, // время отправки будет назначатся на сервере
+      author_id: 2, // когда сделаю авторизацию, это поле можно будет убрать
+      author: "Dmitrii Oreshkin",
+    };
 
-        if (value === '') {
-            return;
-        }
+    sendMessage(message);
+    setValue("");
+  }
 
-        let time = new Date();
-        let message = {
-            'text': value,
-            'date': `${time.getHours()}:${time.getMinutes()}`,
-            'sender_name': 'Dmitrii Oreshkin'
-        };
-
-        sendMessage(message);
-        setValue('');
-    }
-
-    return (
-        <form className={styles.form} action="/" onSubmit={handleSubmit}>
-            <input className={styles.formInput} name="message-text" placeholder="Cообщение" type="textarea" value={value} onChange={handleChange}/>
-            <button className={styles.addDocumentBtn} ><span className="material-icons">attachment</span></button>
-        </form>
-    )
+  return (
+    <form className={styles.form} action="/" onSubmit={handleSubmit}>
+      <input
+        className={styles.formInput}
+        name="message-text"
+        placeholder="Cообщение"
+        type="textarea"
+        value={value}
+        onChange={handleChange}
+      />
+      <button className={styles.addDocumentBtn}>
+        <span className="material-icons">attachment</span>
+      </button>
+    </form>
+  );
 }
 
 export { ChatMessageForm };

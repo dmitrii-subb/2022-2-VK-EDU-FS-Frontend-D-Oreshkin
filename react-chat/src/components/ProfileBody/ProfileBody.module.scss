@@ -1,7 +1,9 @@
+@import "../../App.module.scss";
+
 .profileBody {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: $profileBodybackground;
     flex-grow: 2;
     gap: 20px;
 }

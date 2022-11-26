@@ -1,13 +1,17 @@
 .form {
     display: flex;
     flex-direction: row;
+    align-self: center;
     justify-content: space-evently;
     width: 100%;
-    border-top: 1px solid #dedede;
+    margin-bottom: 10px;
+    // border-top: 1px solid #dedede;
+    
 }
 
 input[type=submit] {
     visibility: collapse;
+    
 }
 
 .formInput {
@@ -16,16 +20,20 @@ input[type=submit] {
     outline: none;
     height: 60px;
     padding-left: 15px;
-    width: calc(100% - 2px);
+    width: 100%;
+    border-radius: 16px 0px 0px 16px;
+    background-color: #1f2024;
+    color: white;
 }
 
 .addDocumentBtn {
-    background-color: white;
     color: #6e6e6e;
+    border-radius: 0px 16px 16px 0px;
+    background-color: #1f2024;
     border: 0;
-    padding-right: 15px;
     flex-basis: 60px;
     transition: background-color 0.1s, color 0.1s;
+    
 }
 
 .addDocumentBtn:hover {

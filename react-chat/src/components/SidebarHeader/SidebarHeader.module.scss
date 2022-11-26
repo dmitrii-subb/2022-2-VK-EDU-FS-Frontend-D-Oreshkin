@@ -1,28 +1,15 @@
-header {
+.header {
     display: flex;
+    justify-content: center;
     height: 80px;
-    background-color: #8e24aa;
+    background-color: #17191d;
 }
 
 .applicationName {
     flex-grow: 1;
-    display: flex;
     color: #ffffff;
-    align-items: center;
-    padding-left: 10px;
+    align-self: center;
+    text-align: center;
 }
 
-.burgerButton,
-.searchButton {
-    background-color: #8e24aa;
-    color: #ffffff;
-    border: 0;
-    flex-basis: 60px;
-    transition: background-color 0.1s, color 0.1s;
-}
 
-.burgerButton:hover,
-.searchButton:hover {
-   background-color: #d37ceb;
-   color: black;
-}
