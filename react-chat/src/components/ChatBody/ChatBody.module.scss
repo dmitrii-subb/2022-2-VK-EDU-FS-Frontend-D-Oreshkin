@@ -1,9 +1,12 @@
 @import "../../App.module.scss";
 
-@mixin messageStyle($color, $align, $radius){
+@mixin messageStyle($color, $align, $textAlign, $radius){
+    display: flex;
+    flex-direction: column;
     background-color: $color;
     padding: 10px;
     align-self: $align;
+    text-align: $textAlign;
     border-radius: $radius;
 }
 
@@ -64,6 +67,11 @@
             font-size: 25px;
         }
     }
+
+    .image {
+        max-width: 400px;
+        border-radius: 10px;
+    }
     
 }
 
@@ -72,7 +80,7 @@
     align-self: flex-end;
 
     .messageText{
-        @include messageStyle($chatBodyMessageBgLeft, flex-end, 16px 0 16px 16px)
+        @include messageStyle($chatBodyMessageBgLeft, flex-end, end, 16px 0 16px 16px)
     }
 
     .messageMeta {
@@ -85,7 +93,7 @@
     align-self: flex-start;
 
     .messageText{
-        @include messageStyle($chatBodyMessageBgRight, flex-start, 0 16px 16px 16px)
+        @include messageStyle($chatBodyMessageBgRight, flex-start, start, 0 16px 16px 16px)
     }
 
     .messageMeta {

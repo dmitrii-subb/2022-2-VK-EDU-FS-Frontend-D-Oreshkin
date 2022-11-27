@@ -1,6 +1,5 @@
 {
-  "name": "react-chat",
-  "homepage": "https://dmitrii-subb.github.io/2022-2-VK-EDU-FS-Frontend-D-Oreshkin",
+  "name": "chat2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,8 +11,10 @@
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

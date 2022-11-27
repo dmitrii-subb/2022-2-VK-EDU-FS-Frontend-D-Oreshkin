@@ -1,5 +1,11 @@
 import React from "react";
 import styles from "./ProfileHeader.module.scss";
+import { Link } from "react-router-dom";
+
+const linkStyle = {
+  alignSelf: "center",
+  touchAction: "auto",
+};
 
 function ProfileHeader() {
   return (

@@ -23,7 +23,17 @@
 
 input[type=submit] {
     visibility: collapse;
-    
+}
+
+input[type=file] {
+display: none;}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 .formInput {
