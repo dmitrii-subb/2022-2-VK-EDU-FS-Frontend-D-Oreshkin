@@ -65,10 +65,12 @@ function ChatMessageForm({ sendMessage, chat }) {
           onChange={handleChange}
         />
 
-        <button className={styles.addDocumentBtn} type="file">
-          <input className={styles.button} type="file" onChange={onFile} />
-          <span className="material-icons">attachment</span>
-        </button>
+        <input type="file" id="file" onChange={onFile} accept="image/*" />
+        <div className={styles.addDocumentBtn}>
+          <label className={styles.button} htmlFor="file">
+            <span className="material-icons">attachment</span>
+          </label>
+        </div>
       </form>
     </div>
   );
