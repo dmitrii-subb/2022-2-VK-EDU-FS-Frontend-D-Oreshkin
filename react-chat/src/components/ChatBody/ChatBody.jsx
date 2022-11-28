@@ -35,6 +35,12 @@ function ChatBody({ messages, chat }) {
           {message.image && (
             <img className={styles.image} src={message.image} alt="" />
           )}
+          {message.audio && (
+            <audio controls="controls" src={message.audio}></audio>
+          )}
+          {message.location !== "" && (
+            <a href={message.location}>My location</a>
+          )}
           <span>{message.text}</span>
         </div>
       </div>

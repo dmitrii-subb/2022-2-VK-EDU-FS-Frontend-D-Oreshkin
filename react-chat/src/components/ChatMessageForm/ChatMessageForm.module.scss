@@ -50,15 +50,22 @@ display: none;}
 
 .addDocumentBtn {
     color: #6e6e6e;
+    background-color: #1f2024;
+    border: 0;
+    flex-basis: 60px;
+    transition: background-color 0.1s, color 0.1s;
+}
+
+.addAudioBtn {
+    color: #6e6e6e;
     border-radius: 0px 16px 16px 0px;
     background-color: #1f2024;
     border: 0;
     flex-basis: 60px;
     transition: background-color 0.1s, color 0.1s;
-    
 }
 
-.addDocumentBtn:hover {
+.addDocumentBtn:hover, .addAudioBtn:hover {
    background-color: #d37ceb;
    color: black;
 }

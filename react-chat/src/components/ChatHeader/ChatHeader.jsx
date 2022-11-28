@@ -1,6 +1,17 @@
 import React from "react";
 import styles from "./ChatHeader.module.scss";
 
+const showNotification = () => {
+  if (window.Notification && Notification.permission !== "denied") {
+    Notification.requestPermission(function (status) {
+      new Notification("Уведомление", {
+        body: "Текст уведомления",
+        // icon: "/path/to/icon.png",
+      });
+    });
+  }
+};
+
 function ChatHeader({ name }) {
   return (
     <header className={styles.header}>
@@ -15,10 +26,10 @@ function ChatHeader({ name }) {
           <span className={styles.companionLastOnline}>was 1 hour ago</span>
         </div>
       </section>
-      <button className={styles.searchButton} type="">
+      <button className={styles.button} type="">
         <span className="material-icons">search</span>
       </button>
-      <button className={styles.moreButton} type="">
+      <button className={styles.button} type="" onClick={showNotification}>
         <span className="material-icons">more_vert</span>
       </button>
     </header>
