@@ -6,9 +6,7 @@
     border-bottom: 1px solid #25272e;
 }
 
-.backButton,
-.searchButton,
-.moreButton {
+.button {
     background-color: #101315;
     color: white;
     border: 0;
@@ -16,9 +14,7 @@
     transition: background-color 0.1s, color 0.1s;
 }
 
-.backButton:hover,
-.searchButton:hover,
-.moreButton:hover {
+.button:hover {
    background-color: #d37ceb;
    color: black;
 }

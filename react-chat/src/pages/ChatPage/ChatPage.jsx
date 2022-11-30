@@ -6,26 +6,21 @@ import { ChatBody } from "../../components/ChatBody";
 import { ChatMessageForm } from "../../components/ChatMessageForm";
 
 import styles from "../pages.module.scss";
-// const API_URL = "https://tt-front.vercel.app";
 
-// import { Centrifuge } from "centrifuge";
-// const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
-// const sub = centrifuge.newSubscription("chat");
+import { Centrifuge } from "centrifuge";
+const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
+const sub = centrifuge.newSubscription("chat");
 
 function ChatPage({ chat }) {
   const [messages, setMessages] = useState([]);
 
-//   function addMessagesToChat(ctx) {
-//     setMessages((prev) => {
-//       const newMessages = Object.assign([], prev);
-//       newMessages.unshift(ctx.data.message);
-//       return newMessages;
-//     });
-//   }
-
-  useEffect(() => {
-    // console.log("messages", messages);
-  }, [messages]);
+  function addMessagesToChat(ctx) {
+    setMessages((prev) => {
+      const newMessages = Object.assign([], prev);
+      newMessages.unshift(ctx.data.message);
+      return newMessages;
+    });
+  }
 
   useEffect(() => {
     if (chat.id === -1) {
@@ -35,19 +30,18 @@ function ChatPage({ chat }) {
           .then((data) => setMessages(data.reverse()));
       };
       setInterval(() => pollItems(), 3000);
-
       return;
     }
+
     fetch(`http://localhost:9000/api/v1/chats/messages_in_chat/${chat.id}/`)
       .then((resp) => resp.json())
       .then((data) => setMessages(data.reverse()));
   }, [chat]);
 
   useEffect(() => {
-    // чтобы соединение не пыталось установиться на GP
-    // sub.on("publication", addMessagesToChat);
-    // sub.subscribe();
-    // centrifuge.connect();
+    sub.on("publication", addMessagesToChat);
+    sub.subscribe();
+    centrifuge.connect();
   }, []);
 
   function sendMessage(message) {

@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .form {
     display: flex;
     flex-direction: row;
@@ -5,13 +10,30 @@
     justify-content: space-evently;
     width: 100%;
     margin-bottom: 10px;
-    // border-top: 1px solid #dedede;
-    
+    margin-top: 10px;    
+}
+
+.imagePreview {
+    width: 100px;
+    height: 100px;
+    border-radius: 16px;
+    margin-top: 10px;
+
 }
 
 input[type=submit] {
     visibility: collapse;
-    
+}
+
+input[type=file] {
+display: none;}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 .formInput {
@@ -28,15 +50,22 @@ input[type=submit] {
 
 .addDocumentBtn {
     color: #6e6e6e;
+    background-color: #1f2024;
+    border: 0;
+    flex-basis: 60px;
+    transition: background-color 0.1s, color 0.1s;
+}
+
+.addAudioBtn {
+    color: #6e6e6e;
     border-radius: 0px 16px 16px 0px;
     background-color: #1f2024;
     border: 0;
     flex-basis: 60px;
     transition: background-color 0.1s, color 0.1s;
-    
 }
 
-.addDocumentBtn:hover {
+.addDocumentBtn:hover, .addAudioBtn:hover {
    background-color: #d37ceb;
    color: black;
 }

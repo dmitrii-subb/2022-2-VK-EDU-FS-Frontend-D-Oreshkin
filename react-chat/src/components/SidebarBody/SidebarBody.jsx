@@ -1,12 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styles from "./SidebarBody.module.scss";
+import { useNavigate } from "react-router-dom";
 
 function SidebarBody({ openChat }) {
   //     планируется делать запрос на бэк, ответ от которого - это массив со всеми чатами пользователя.
   //     у чата есть свой id и другая информация, эта информация передается в функцию openChat(), которая открывает этот чат
 
   const [chats, setChats] = useState([]);
+  const navigate = useNavigate();
 
   function getChats(id) {
     fetch("http://localhost:9000/api/v1/users/user/2/get_all_chats", {
@@ -24,7 +26,7 @@ function SidebarBody({ openChat }) {
   }, []);
 
   useEffect(() => {
-    console.log("chats", chats);
+    console.log("чаты пользователя: (SidebarBody)", chats);
   }, [chats]);
 
   const chatBlocks = chats.map((chat, index) => {
@@ -32,7 +34,11 @@ function SidebarBody({ openChat }) {
       <section
         key={index}
         className={styles.chatPreview}
-        onClick={() => openChat(chat)}
+        // onClick={() => openChat(chat)}
+        onClick={() => {
+          openChat(chat);
+          navigate(`/chat/${chat.id}`);
+        }}
       >
         <div className={styles.chatPicture}>
           <img
@@ -60,7 +66,10 @@ function SidebarBody({ openChat }) {
 
       <section
         className={styles.chatPreview}
-        onClick={() => openChat({ id: -1, title: "Frontend chat" })}
+        onClick={() => {
+          openChat({ id: -1, title: "Front-end chat" });
+          navigate(`/chat/-1`);
+        }}
       >
         <div className={styles.chatPicture}>
           <img

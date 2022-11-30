@@ -2,16 +2,20 @@ import React from "react";
 import styles from "./ChatBody.module.scss";
 
 function ChatBody({ messages, chat }) {
-  console.log("chat", chat);
+  console.log(
+    " обратить внимаение! вызывается несколько раз. запрашиваем чаты пользователя: (chatBody)",
+    chat
+  );
+  // функция вызывается два раза, кажется из-за того что messages не успевает обновится
 
   const messageBlocks = messages.map((message, index) => {
-    console.log("message ", message);
+    console.log("message: (chatBody)", message);
     return (
       <div
         key={index}
         className={`${styles.message} ${
-          // chat.id === message.author ? styles.right : styles.left
-          message.author === "Dmitrii Oreshkin" ? styles.right : styles.left
+          chat.id !== message.author_id ? styles.right : styles.left
+          // message.author === "Dmitrii Oreshkin" ? styles.right : styles.left
         }`}
       >
         <div className={styles.messageMeta}>
@@ -27,7 +31,18 @@ function ChatBody({ messages, chat }) {
             </>
           )}
         </div>
-        <div className={styles.messageText}>{message.text}</div>
+        <div className={styles.messageText}>
+          {message.image && (
+            <img className={styles.image} src={message.image} alt="" />
+          )}
+          {message.audio && (
+            <audio controls="controls" src={message.audio}></audio>
+          )}
+          {message.location !== "" && (
+            <a href={message.location}>My location</a>
+          )}
+          <span>{message.text}</span>
+        </div>
       </div>
     );
   });

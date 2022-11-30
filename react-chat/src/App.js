@@ -1,61 +1,83 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { SidebarPage } from './pages/SidebarPage'
 import { ProfilePage } from './pages/ProfilePage'
-import { ExtraButtons } from "./pages/ExtraButtons";
+import { NavButtons } from "./pages/NavButtons";
 
+import { ChatPage } from "./pages/ChatPage";
 
-import { Layout } from './pages/Layout'
+import {useDispatch, useSelector} from 'react-redux'
 
 function App() {
 
   const [chat, setChat] = useState({});
 
+  const dispatch = useDispatch()
+  const platform = useSelector(state => state)
+  
+
   function openChat(chat){
-    console.log(chat);
+    console.log('открыт чат: (app.js)', chat);
     setChat(chat);
   }
 
-  // const [screenSize, getDimension] = useState({
-  //   dynamicWidth: window.innerWidth,
-  //   dynamicHeight: window.innerHeight
-  // });
-  // const [isMobile, setMobile] = useState(false);
+  const [screenSize, getDimension] = useState({
+    dynamicWidth: window.innerWidth,
+    dynamicHeight: window.innerHeight
+  });
 
-  // const setDimension = () => {
-  //   getDimension({
-  //     dynamicWidth: window.innerWidth,
-  //     dynamicHeight: window.innerHeight
-  //   })
-  // }
+  const setDimension = () => {
+    getDimension({
+      dynamicWidth: window.innerWidth,
+      dynamicHeight: window.innerHeight
+    })
+  }
   
-  // useEffect(() => {
-  //   window.addEventListener('resize', setDimension);
-  //   console.log(screenSize)
+  useEffect(() => {
+    window.addEventListener('resize', setDimension);
+    console.log(screenSize)
     
-  //   if (screenSize.dynamicWidth <= 1100) {
-  //     setMobile(true);
-  //   }
-  //   else {
-  //     setMobile(false);
-  //   }
+    if (screenSize.dynamicWidth <= 1100) {
+      dispatch({type: 'isMobile', payload: 0});
+    }
+    else {
+      dispatch({type: 'isDesktop', payload: 0});
+    }
     
-  //   return(() => {
-  //       window.removeEventListener('resize', setDimension);
-  //   })
-  // }, [screenSize])
+    return(() => {
+        window.removeEventListener('resize', setDimension);
+    })
+  }, [screenSize])
 
   return (
     <>
-      <ExtraButtons />
-      <Routes>
-        <Route path="*" element={<Layout chat={chat}/>}>
-          <Route index element={<SidebarPage openChat={openChat}/>} />
-          <Route path="profile" element={<ProfilePage />} />
-        </Route> 
-      </Routes> 
+      <NavButtons />
+
+      {platform.isDesktop ? 
+        <Routes>
+          <Route exact path="/" element={<SidebarPage openChat={openChat}/>}>
+            <Route path={`/chat/${chat.id}`} element={<ChatPage chat={chat} />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="*"
+              element={<Navigate to="/" replace />}
+            />
+          </Route>
+        </Routes>
+      :
+        <Routes>
+          <Route exact path="/" element={<SidebarPage openChat={openChat}/>} />
+          <Route path="/profile" element={<ProfilePage />} />
+
+          <Route path={`/chat/${chat.id}`} element={<ChatPage chat={chat}/>} />
+          <Route
+              path="*"
+              element={<Navigate to="/" replace />}
+            />
+        </Routes>
+      }
     </>
   );
 }
