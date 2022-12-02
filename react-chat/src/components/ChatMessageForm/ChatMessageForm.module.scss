@@ -49,10 +49,13 @@ display: none;}
 }
 
 .addDocumentBtn {
+    display: flex;
     color: #6e6e6e;
     background-color: #1f2024;
     border: 0;
     flex-basis: 60px;
+    justify-content: center;
+    align-items: center;
     transition: background-color 0.1s, color 0.1s;
 }
 

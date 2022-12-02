@@ -2,18 +2,18 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 
 import { SidebarHeader } from "../../components/SidebarHeader";
-import { SidebarBody } from "../../components/SidebarBody";
+import SidebarBody from "../../components/SidebarBody/SidebarBody";
 import { SidebarSearchField } from "../../components/SidebarSearchField";
 
 import styles from "./SidebarPage.module.scss";
 
-function SidebarPage({ openChat }) {
+function SidebarPage(props) {
   return (
     <>
       <aside className={styles.allChats}>
         <SidebarHeader />
         <SidebarSearchField />
-        <SidebarBody openChat={openChat} />
+        <SidebarBody />
       </aside>
 
       <Outlet />
@@ -21,4 +21,9 @@ function SidebarPage({ openChat }) {
   );
 }
 
+// const mapStateToProps = (state) => ({
+//   messages: state.messageReduser.messages,
+// });
+
+// export default connect(mapStateToProps, { openChat })(SidebarPage);
 export { SidebarPage };
