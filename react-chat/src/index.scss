@@ -1,6 +1,5 @@
 @import "App.module.scss";
 
-
 html {
   box-sizing: border-box;
   font-family: Roboto;
@@ -14,8 +13,8 @@ html {
   padding: 0;
 }
 
-#root, .body {
-  
+#root,
+.body {
   display: flex;
   background-color: $mainBackground;
 
@@ -23,7 +22,7 @@ html {
     flex-direction: column;
   }
 
-  @media screen and (min-width: 1100px) {    
+  @media screen and (min-width: 1100px) {
     flex-direction: row;
   }
 }

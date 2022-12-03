@@ -5,37 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
 
-import { createStore } from "redux";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 import { Provider } from "react-redux";
-
-const defaultState = {
-  isMobile: false,
-  isDesktop: true,
-};
-
-const reduser = (state = defaultState, action) => {
-  switch (action.type) {
-    case "isMobile":
-      state.isMobile = true;
-      state.isDesktop = false;
-      return state;
-    case "isDesktop":
-      state.isMobile = false;
-      state.isDesktop = true;
-      return state;
-    default:
-      return state;
-  }
-};
-
-const store = createStore(reduser);
+import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <HashRouter>
     <Provider store={store}>
-      <App />
+      <GoogleOAuthProvider clientId="125271106...c2q05mtb6us8e.apps.googleusercontent.com">
+        <App />
+      </GoogleOAuthProvider>
     </Provider>
   </HashRouter>
   // </React.StrictMode>

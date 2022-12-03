@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 import styles from "./SidebarBody.module.scss";
 import { useNavigate } from "react-router-dom";
 
-function SidebarBody({ openChat }) {
+import { connect } from "react-redux";
+import { openChat } from "../../actions/activeChatReduser";
+
+function SidebarBody(props) {
+  // console.log(props);
   //     планируется делать запрос на бэк, ответ от которого - это массив со всеми чатами пользователя.
   //     у чата есть свой id и другая информация, эта информация передается в функцию openChat(), которая открывает этот чат
 
@@ -36,7 +40,7 @@ function SidebarBody({ openChat }) {
         className={styles.chatPreview}
         // onClick={() => openChat(chat)}
         onClick={() => {
-          openChat(chat);
+          props.openChat(chat);
           navigate(`/chat/${chat.id}`);
         }}
       >
@@ -67,7 +71,7 @@ function SidebarBody({ openChat }) {
       <section
         className={styles.chatPreview}
         onClick={() => {
-          openChat({ id: -1, title: "Front-end chat" });
+          props.openChat({ id: -1, title: "Front-end chat" });
           navigate(`/chat/-1`);
         }}
       >
@@ -91,4 +95,9 @@ function SidebarBody({ openChat }) {
   );
 }
 
-export { SidebarBody };
+const mapStateToProps = (state) => ({
+  chat: state.activeChatsReduser,
+});
+
+export default connect(mapStateToProps, { openChat })(SidebarBody);
+// export { SidebarBody };

@@ -1,86 +1,74 @@
-import { useEffect, useState } from 'react';
-import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-import { SidebarPage } from './pages/SidebarPage'
-import { ProfilePage } from './pages/ProfilePage'
+import { SidebarPage } from "./pages/SidebarPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { NavButtons } from "./pages/NavButtons";
 
-import { ChatPage } from "./pages/ChatPage";
+import ChatPage from "./pages/ChatPage/ChatPage.jsx";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import { RequireAuth } from "./hoc/RequireAuth";
 
-import {useDispatch, useSelector} from 'react-redux'
+import { useSelector, connect } from "react-redux";
+import { setView } from "./actions/viewReduser";
 
-function App() {
-
-  const [chat, setChat] = useState({});
-
-  const dispatch = useDispatch()
-  const platform = useSelector(state => state)
-  
-
-  function openChat(chat){
-    console.log('открыт чат: (app.js)', chat);
-    setChat(chat);
-  }
+function App(props) {
+  const chat = useSelector((state) => state.activeChatReduser);
+  const user = useSelector((state) => state.activeUserReduser);
 
   const [screenSize, getDimension] = useState({
     dynamicWidth: window.innerWidth,
-    dynamicHeight: window.innerHeight
+    dynamicHeight: window.innerHeight,
   });
 
   const setDimension = () => {
     getDimension({
       dynamicWidth: window.innerWidth,
-      dynamicHeight: window.innerHeight
-    })
-  }
-  
+      dynamicHeight: window.innerHeight,
+    });
+  };
+
   useEffect(() => {
-    window.addEventListener('resize', setDimension);
-    console.log(screenSize)
-    
-    if (screenSize.dynamicWidth <= 1100) {
-      dispatch({type: 'isMobile', payload: 0});
-    }
-    else {
-      dispatch({type: 'isDesktop', payload: 0});
-    }
-    
-    return(() => {
-        window.removeEventListener('resize', setDimension);
-    })
-  }, [screenSize])
+    window.addEventListener("resize", setDimension);
+    props.setView(screenSize);
+    return () => {
+      window.removeEventListener("resize", setDimension);
+    };
+  }, [screenSize]);
 
   return (
     <>
-      <NavButtons />
+      {user.isLoggedIn ? (
+        <>
+          <NavButtons />
+          {props.view.isDesktop ? (
+            <Routes>
+              <Route exact path="/" element={<SidebarPage />}>
+                <Route path={`/chat/${chat.id}`} element={<ChatPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Route>
+            </Routes>
+          ) : (
+            <Routes>
+              <Route exact path="/" element={<SidebarPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
 
-      {platform.isDesktop ? 
-        <Routes>
-          <Route exact path="/" element={<SidebarPage openChat={openChat}/>}>
-            <Route path={`/chat/${chat.id}`} element={<ChatPage chat={chat} />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route
-              path="*"
-              element={<Navigate to="/" replace />}
-            />
-          </Route>
-        </Routes>
-      :
-        <Routes>
-          <Route exact path="/" element={<SidebarPage openChat={openChat}/>} />
-          <Route path="/profile" element={<ProfilePage />} />
-
-          <Route path={`/chat/${chat.id}`} element={<ChatPage chat={chat}/>} />
-          <Route
-              path="*"
-              element={<Navigate to="/" replace />}
-            />
-        </Routes>
-      }
+              <Route path={`/chat/${chat.id}`} element={<ChatPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          )}
+        </>
+      ) : (
+        <LoginPage />
+      )}
     </>
   );
 }
 
+const mapStateToProps = (state) => ({
+  view: state.viewReduser,
+});
 
-export default App;
+export default connect(mapStateToProps, { setView })(App);
