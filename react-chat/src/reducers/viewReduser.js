@@ -1,4 +1,4 @@
-import { SET_MOBILE_VIEW, SET_DESKTOP_VIEW } from "../constants/ActionTypes";
+import { SET_MOBILE_VIEW, SET_DESKTOP_VIEW } from "../constants/reducer";
 
 const initialState = {
   isMobile: false,

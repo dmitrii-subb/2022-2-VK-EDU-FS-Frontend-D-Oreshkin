@@ -4,12 +4,11 @@ import styles from "./SidebarBody.module.scss";
 import { useNavigate } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { openChat } from "../../actions/activeChatReduser";
+import { openChatAction } from "../../actions/activeChatAction";
 
 function SidebarBody(props) {
-  // console.log(props);
   //     планируется делать запрос на бэк, ответ от которого - это массив со всеми чатами пользователя.
-  //     у чата есть свой id и другая информация, эта информация передается в функцию openChat(), которая открывает этот чат
+  //     у чата есть свой id и другая информация, эта информация передается в функцию openChatAction(), которая открывает этот чат
 
   const [chats, setChats] = useState([]);
   const navigate = useNavigate();
@@ -38,9 +37,8 @@ function SidebarBody(props) {
       <section
         key={index}
         className={styles.chatPreview}
-        // onClick={() => openChat(chat)}
         onClick={() => {
-          props.openChat(chat);
+          props.openChatAction(chat);
           navigate(`/chat/${chat.id}`);
         }}
       >
@@ -71,7 +69,7 @@ function SidebarBody(props) {
       <section
         className={styles.chatPreview}
         onClick={() => {
-          props.openChat({ id: -1, title: "Front-end chat" });
+          props.openChatAction({ id: -1, title: "Front-end chat" });
           navigate(`/chat/-1`);
         }}
       >
@@ -84,12 +82,8 @@ function SidebarBody(props) {
         </div>
         <div className={styles.chatDetails}>
           <span className={styles.chatName}>Frontend chat</span>
-          {/* <span className={styles.chatLastMessage}>hello, world</span> */}
         </div>
-        <div className={styles.chatMeta}>
-          {/* <span className={styles.LastMessageTime}>13:39</span> */}
-          {/* <span className={styles.messageState}>99</span> */}
-        </div>
+        <div className={styles.chatMeta}></div>
       </section>
     </article>
   );
@@ -99,5 +93,4 @@ const mapStateToProps = (state) => ({
   chat: state.activeChatsReduser,
 });
 
-export default connect(mapStateToProps, { openChat })(SidebarBody);
-// export { SidebarBody };
+export default connect(mapStateToProps, { openChatAction })(SidebarBody);

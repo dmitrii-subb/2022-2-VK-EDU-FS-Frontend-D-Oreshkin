@@ -6,7 +6,7 @@ import ChatMessageForm from "../../components/ChatMessageForm/ChatMessageForm.js
 
 import styles from "../pages.module.scss";
 
-function ChatPage(props) {
+function ChatPage() {
   return (
     <section className={styles.chatPage}>
       <ChatHeader />
