@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from "../constants/ActionTypes";
+import { LOGIN, LOGOUT } from "../constants/reducer";
 
 const login = () => ({
   type: LOGIN,
@@ -10,13 +10,13 @@ const logout = () => ({
   payload: { isLoggedIn: false },
 });
 
-export const loginUser = () => {
+export const loginUserAction = () => {
   return (dispatch, getState) => {
     dispatch(login());
   };
 };
 
-export const logoutUser = () => {
+export const logoutUserAction = () => {
   return (dispatch, getState) => {
     dispatch(logout());
   };

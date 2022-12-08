@@ -1,4 +1,4 @@
-import { SET_ACTIVE_CHAT } from "../constants/ActionTypes";
+import { SET_ACTIVE_CHAT } from "../constants/reducer";
 
 const initialState = {
   id: 0,

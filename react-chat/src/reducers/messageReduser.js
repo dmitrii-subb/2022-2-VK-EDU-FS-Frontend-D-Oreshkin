@@ -2,7 +2,7 @@ import {
   GET_MESSAGES_SUCCESS,
   GET_MESSAGES_FAILURE,
   ADD_NEW_MESSAGE,
-} from "../constants/ActionTypes";
+} from "../constants/reducer";
 
 const initialState = {
   messages: [],

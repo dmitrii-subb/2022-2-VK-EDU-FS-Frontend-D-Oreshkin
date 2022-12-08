@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from "../constants/ActionTypes";
+import { LOGIN, LOGOUT } from "../constants/reducer";
 
 const initialState = {
   isLoggedIn: false,

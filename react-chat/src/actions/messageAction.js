@@ -2,7 +2,7 @@ import {
   GET_MESSAGES_SUCCESS,
   GET_MESSAGES_FAILURE,
   ADD_NEW_MESSAGE,
-} from "../constants/ActionTypes";
+} from "../constants/reducer";
 
 const getMessagesSuccess = (messages) => ({
   type: GET_MESSAGES_SUCCESS,
@@ -21,7 +21,7 @@ const addNewMessage = (message) => ({
   payload: message,
 });
 
-export const getMessages = (chat_id) => {
+export const getMessagesAction = (chat_id) => {
   return (dispatch, getState) => {
     console.log("state: ", getState());
     if (chat_id === -1) {
@@ -45,7 +45,7 @@ export const getMessages = (chat_id) => {
   };
 };
 
-export const newMessage = (message) => {
+export const newMessageAction = (message) => {
   return (dispatch, getState) => {
     if (message.chat_id === -1) {
       fetch(`https://tt-front.vercel.app/message`, {
@@ -70,7 +70,7 @@ export const newMessage = (message) => {
   };
 };
 
-export const renderNewMessage = (message) => {
+export const renderNewMessageAction = (message) => {
   return (dispatch, getState) => {
     dispatch(addNewMessage(message));
   };

@@ -1,4 +1,4 @@
-import { SET_MOBILE_VIEW, SET_DESKTOP_VIEW } from "../constants/ActionTypes";
+import { SET_MOBILE_VIEW, SET_DESKTOP_VIEW } from "../constants/reducer";
 
 const setMobileView = () => ({
   type: SET_MOBILE_VIEW,
@@ -16,8 +16,7 @@ const setDesktopView = () => ({
   },
 });
 
-export const setView = (screenSize) => {
-  //   alert();
+export const setViewAction = (screenSize) => {
   return (dispatch, getState) => {
     if (screenSize.dynamicWidth <= 1100) {
       dispatch(setMobileView());

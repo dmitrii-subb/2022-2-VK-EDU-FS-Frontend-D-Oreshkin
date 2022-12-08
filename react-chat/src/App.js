@@ -10,12 +10,26 @@ import ChatPage from "./pages/ChatPage/ChatPage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { RequireAuth } from "./hoc/RequireAuth";
 
-import { useSelector, connect } from "react-redux";
-import { setView } from "./actions/viewReduser";
+import { connect, useSelector } from "react-redux";
+import { setViewAction } from "./actions/viewAction";
+import { renderNewMessageAction } from "./actions/messageAction";
+
+import { Centrifuge } from "centrifuge";
+const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
+const sub = centrifuge.newSubscription("chat");
 
 function App(props) {
-  const chat = useSelector((state) => state.activeChatReduser);
   const user = useSelector((state) => state.activeUserReduser);
+
+  function addMessagesToChat(ctx) {
+    props.renderNewMessageAction(ctx.data.message);
+  }
+
+  useEffect(() => {
+    sub.on("publication", addMessagesToChat);
+    sub.subscribe();
+    centrifuge.connect();
+  }, []);
 
   const [screenSize, getDimension] = useState({
     dynamicWidth: window.innerWidth,
@@ -31,7 +45,7 @@ function App(props) {
 
   useEffect(() => {
     window.addEventListener("resize", setDimension);
-    props.setView(screenSize);
+    props.setViewAction(screenSize);
     return () => {
       window.removeEventListener("resize", setDimension);
     };
@@ -45,7 +59,7 @@ function App(props) {
           {props.view.isDesktop ? (
             <Routes>
               <Route exact path="/" element={<SidebarPage />}>
-                <Route path={`/chat/${chat.id}`} element={<ChatPage />} />
+                <Route path={`/chat/:id`} element={<ChatPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
@@ -55,7 +69,7 @@ function App(props) {
               <Route exact path="/" element={<SidebarPage />} />
               <Route path="/profile" element={<ProfilePage />} />
 
-              <Route path={`/chat/${chat.id}`} element={<ChatPage />} />
+              <Route path={`/chat/:id`} element={<ChatPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           )}
@@ -71,4 +85,7 @@ const mapStateToProps = (state) => ({
   view: state.viewReduser,
 });
 
-export default connect(mapStateToProps, { setView })(App);
+export default connect(mapStateToProps, {
+  setViewAction,
+  renderNewMessageAction,
+})(App);

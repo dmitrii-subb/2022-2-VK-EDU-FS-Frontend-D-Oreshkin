@@ -3,7 +3,7 @@ import { useState } from "react";
 import { connect, useSelector } from "react-redux";
 import styles from "./ChatMessageForm.module.scss";
 import useRecorder from "./Recorder";
-import { newMessage } from "../../actions/messageReduser";
+import { newMessageAction } from "../../actions/messageAction";
 
 function ChatMessageForm(props) {
   const chat = useSelector((state) => state.activeChatReduser);
@@ -63,11 +63,14 @@ function ChatMessageForm(props) {
       location: location,
     };
 
-    props.newMessage(message);
+    props.newMessageAction(message);
     setValue("");
     setFile([]);
     setLocation("");
     setAudio([]);
+
+    message.location = "";
+    message.audio = [];
   }
 
   return (
@@ -124,6 +127,6 @@ const mapStateToProps = (state) => ({
   messages: state.messageReduser.messages,
 });
 
-export default connect(mapStateToProps, { newMessage })(ChatMessageForm);
+export default connect(mapStateToProps, { newMessageAction })(ChatMessageForm);
 
 // export { ChatMessageForm };

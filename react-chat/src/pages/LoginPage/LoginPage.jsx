@@ -1,17 +1,16 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { useLocation } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { loginUser } from "../../actions/activeUserReduser";
+import { loginUserAction } from "../../actions/activeUserAction";
 import { connect } from "react-redux";
 import styles from "./LoginPage.module.scss";
 
-const drfClientId = "WwwthwN1d....T5G4shbU4E";
+const drfClientId = "WwwthwN1d....9sT5G4shbU4E";
 const drfClientSecret =
-  "VXSjjmMLfyaGMCfOBFeWJJEAvRqhDxSs....tkDLqqTv1hryIW2wCMK87PBsyeWtE";
+  "VXSjjmMLfyaGMCfOBFeWJJEAvRqhDxS...WhJyg6OXWjNtkDLqqTv1hryIW2wCMK87PBsyeWtE";
 const baseURL = "http://localhost:9000";
 
 const LoginPage = (props) => {
-  const navigate = useNavigate();
   const location = useLocation();
 
   const handleGoogleLogin = (response) => {
@@ -31,7 +30,7 @@ const LoginPage = (props) => {
         console.log({ access_token, refresh_token });
         localStorage.setItem("access_token", access_token);
         localStorage.setItem("refresh_token", refresh_token);
-        props.loginUser();
+        props.loginUserAction();
       })
       .catch((err) => {
         console.log("Error Google login", err);
@@ -52,11 +51,10 @@ const LoginPage = (props) => {
       ;
     </div>
   );
-  //   <p>{fromPage}</p>;
 };
 
 const mapStateToProps = (state) => ({
   user_state: state.activeUserReduser,
 });
 
-export default connect(mapStateToProps, { loginUser })(LoginPage);
+export default connect(mapStateToProps, { loginUserAction })(LoginPage);

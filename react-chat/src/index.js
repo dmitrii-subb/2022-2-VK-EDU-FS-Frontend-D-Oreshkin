@@ -15,7 +15,7 @@ root.render(
   // <React.StrictMode>
   <HashRouter>
     <Provider store={store}>
-      <GoogleOAuthProvider clientId="125271106...c2q05mtb6us8e.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId="125271..6000-fv....b6us8e.apps.googleusercontent.com">
         <App />
       </GoogleOAuthProvider>
     </Provider>

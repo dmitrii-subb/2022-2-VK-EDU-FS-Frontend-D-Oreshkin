@@ -4,29 +4,15 @@ import { useEffect } from "react";
 
 import { connect, useSelector } from "react-redux";
 
-import { getMessages } from "../../actions/messageReduser";
-import { renderNewMessage } from "../../actions/messageReduser";
-
-import { Centrifuge } from "centrifuge";
-const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
-const sub = centrifuge.newSubscription("chat");
+import { getMessagesAction } from "../../actions/messageAction";
+import { renderNewMessageAction } from "../../actions/messageAction";
 
 function ChatBody(props) {
   const chat = useSelector((state) => state.activeChatReduser);
 
-  function addMessagesToChat(ctx) {
-    props.renderNewMessage(ctx.data.message);
-  }
-
   useEffect(() => {
-    props.getMessages(chat.id);
+    props.getMessagesAction(chat.id);
   }, [chat]);
-
-  useEffect(() => {
-    sub.on("publication", addMessagesToChat);
-    sub.subscribe();
-    centrifuge.connect();
-  }, []);
 
   let messageBlocks;
   if (props.messages) {
@@ -75,6 +61,7 @@ const mapStateToProps = (state) => ({
   messages: state.messageReduser.messages,
 });
 
-export default connect(mapStateToProps, { getMessages, renderNewMessage })(
-  ChatBody
-);
+export default connect(mapStateToProps, {
+  getMessagesAction,
+  renderNewMessageAction,
+})(ChatBody);
