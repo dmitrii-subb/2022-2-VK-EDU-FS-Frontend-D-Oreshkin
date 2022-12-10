@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import viewReduser from "./viewReduser";
-import messageReduser from "./messageReduser";
-import activeChatReduser from "./activeChatReduser";
-import activeUserReduser from "./activeUserReduser";
+import viewReducer from "./viewReducer";
+import messageReducer from "./messageReducer";
+import activeChatReducer from "./activeChatReducer";
+import activeUserReducer from "./activeUserReducer";
 
 export default combineReducers({
-  viewReduser,
-  messageReduser,
-  activeChatReduser,
-  activeUserReduser,
+  viewReducer,
+  messageReducer,
+  activeChatReducer,
+  activeUserReducer,
 });
