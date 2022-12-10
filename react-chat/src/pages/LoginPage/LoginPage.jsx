@@ -54,7 +54,7 @@ const LoginPage = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  user_state: state.activeUserReduser,
+  user_state: state.activeUserreducer,
 });
 
 export default connect(mapStateToProps, { loginUserAction })(LoginPage);

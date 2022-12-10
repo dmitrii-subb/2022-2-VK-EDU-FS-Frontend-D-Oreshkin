@@ -19,7 +19,7 @@ const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
 const sub = centrifuge.newSubscription("chat");
 
 function App(props) {
-  const user = useSelector((state) => state.activeUserReduser);
+  const user = useSelector((state) => state.activeUserreducer);
 
   function addMessagesToChat(ctx) {
     props.renderNewMessageAction(ctx.data.message);
@@ -82,7 +82,7 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-  view: state.viewReduser,
+  view: state.viewreducer,
 });
 
 export default connect(mapStateToProps, {

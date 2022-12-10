@@ -15,7 +15,7 @@ const showNotification = () => {
 };
 
 function ChatHeader() {
-  const chat = useSelector((state) => state.activeChatReduser);
+  const chat = useSelector((state) => state.activeChatreducer);
 
   return (
     <header className={styles.header}>
