@@ -1,16 +1,22 @@
 import React from "react";
 import { useState } from "react";
+import { connect, useSelector } from "react-redux";
 import styles from "./ChatMessageForm.module.scss";
 import useRecorder from "./Recorder";
+import { newMessageAction } from "../../actions/messageAction";
 
-function ChatMessageForm({ sendMessage, chat }) {
+function ChatMessageForm(props) {
+  const chat = useSelector((state) => state.activeChatreducer);
+
   const [value, setValue] = useState("");
   const [file, setFile] = useState([]);
   let [audio, setAudio, isRecording, startRecording, stopRecording] =
     useRecorder();
+
   const [location, setLocation] = useState("");
 
-  function getLocation() {
+  function getLocation(event) {
+    event.preventDefault();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -19,8 +25,6 @@ function ChatMessageForm({ sendMessage, chat }) {
   }
 
   function showPosition(position) {
-    // getLocation();
-    // console.log(position.coords.latitude, position.coords.longitude);
     setLocation(
       `https://www.openstreetmap.org/#map=18/${position.coords.latitude}/${position.coords.longitude}`
     );
@@ -46,7 +50,7 @@ function ChatMessageForm({ sendMessage, chat }) {
     event.preventDefault();
 
     if (value === "" && file.length === 0 && audio.length === 0) {
-      // return;
+      return;
     }
 
     let message = {
@@ -59,24 +63,22 @@ function ChatMessageForm({ sendMessage, chat }) {
       location: location,
     };
 
-    sendMessage(message);
+    props.newMessageAction(message);
     setValue("");
     setFile([]);
     setLocation("");
     setAudio([]);
+
+    message.location = "";
+    message.audio = [];
   }
 
   return (
     <div className={styles.container}>
-      {/* <audio controls="controls" src={audioURL}>
-        {" "}
-      </audio> */}
-
       {file.length !== 0 && (
         <>
           <img
             className={styles.imagePreview}
-            // src={`data:image/png;base64,${file[0]}`}
             src={file[1]}
             alt="image_preview"
             onClick={() => setFile([])}
@@ -100,13 +102,16 @@ function ChatMessageForm({ sendMessage, chat }) {
             <span className="material-icons">attachment</span>
           </label>
         </div>
-        <button className={styles.addDocumentBtn} onClick={getLocation}>
+        <div className={styles.addDocumentBtn} onClick={getLocation}>
           <span className="material-icons">location_on</span>
-        </button>
+        </div>
         <button
           className={styles.addAudioBtn}
           onMouseDown={startRecording}
-          onMouseUp={stopRecording}
+          onMouseUp={(e) => {
+            stopRecording();
+            handleSubmit(e);
+          }}
         >
           {!isRecording && <span className="material-icons">mic</span>}
           {isRecording && (
@@ -118,4 +123,10 @@ function ChatMessageForm({ sendMessage, chat }) {
   );
 }
 
-export { ChatMessageForm };
+const mapStateToProps = (state) => ({
+  messages: state.messagereducer.messages,
+});
+
+export default connect(mapStateToProps, { newMessageAction })(ChatMessageForm);
+
+// export { ChatMessageForm };
