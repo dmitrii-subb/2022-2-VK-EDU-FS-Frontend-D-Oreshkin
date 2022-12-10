@@ -73,7 +73,7 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-  view: state.viewReduser,
+  view: state.viewreducer,
 });
 
 export default connect(mapStateToProps, {

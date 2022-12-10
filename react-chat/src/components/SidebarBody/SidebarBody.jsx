@@ -90,7 +90,7 @@ function SidebarBody(props) {
 }
 
 const mapStateToProps = (state) => ({
-  chat: state.activeChatsReduser,
+  chat: state.activeChatsreducer,
 });
 
 export default connect(mapStateToProps, { openChatAction })(SidebarBody);

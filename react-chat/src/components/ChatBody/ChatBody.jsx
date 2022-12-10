@@ -8,7 +8,7 @@ import { getMessagesAction } from "../../actions/messageAction";
 import { renderNewMessageAction } from "../../actions/messageAction";
 
 function ChatBody(props) {
-  const chat = useSelector((state) => state.activeChatReduser);
+  const chat = useSelector((state) => state.activeChatreducer);
 
   useEffect(() => {
     props.getMessagesAction(chat.id);
@@ -58,7 +58,7 @@ function ChatBody(props) {
 }
 
 const mapStateToProps = (state) => ({
-  messages: state.messageReduser.messages,
+  messages: state.messagereducer.messages,
 });
 
 export default connect(mapStateToProps, {

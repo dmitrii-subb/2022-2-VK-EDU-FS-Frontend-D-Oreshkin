@@ -22,7 +22,7 @@ function SidebarPage(props) {
 }
 
 // const mapStateToProps = (state) => ({
-//   messages: state.messageReduser.messages,
+//   messages: state.messagereducer.messages,
 // });
 
 // export default connect(mapStateToProps, { openChat })(SidebarPage);

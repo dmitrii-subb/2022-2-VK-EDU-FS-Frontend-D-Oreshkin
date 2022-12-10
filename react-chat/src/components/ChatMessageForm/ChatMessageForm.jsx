@@ -6,7 +6,7 @@ import useRecorder from "./Recorder";
 import { newMessageAction } from "../../actions/messageAction";
 
 function ChatMessageForm(props) {
-  const chat = useSelector((state) => state.activeChatReduser);
+  const chat = useSelector((state) => state.activeChatreducer);
 
   const [value, setValue] = useState("");
   const [file, setFile] = useState([]);
@@ -124,7 +124,7 @@ function ChatMessageForm(props) {
 }
 
 const mapStateToProps = (state) => ({
-  messages: state.messageReduser.messages,
+  messages: state.messagereducer.messages,
 });
 
 export default connect(mapStateToProps, { newMessageAction })(ChatMessageForm);
