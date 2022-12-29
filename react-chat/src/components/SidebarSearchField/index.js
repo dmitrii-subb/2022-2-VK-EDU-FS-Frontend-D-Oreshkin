@@ -1,1 +1,0 @@
-export { SidebarSearchField } from './SidebarSearchField';

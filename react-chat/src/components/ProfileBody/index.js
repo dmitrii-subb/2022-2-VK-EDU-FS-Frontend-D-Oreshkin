@@ -1,1 +1,0 @@
-export { ProfileBody } from './ProfileBody';
