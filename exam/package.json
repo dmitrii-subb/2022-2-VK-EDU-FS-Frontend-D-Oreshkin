@@ -1,5 +1,6 @@
 {
   "name": "exam",
+  "homepage": "https://dmitrii-subb.github.io/2022-2-VK-EDU-FS-Frontend-D-Oreshkin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
