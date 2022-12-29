@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.6febda77.css",
-    "main.js": "/static/js/main.ae764786.js",
-    "index.html": "/index.html",
-    "main.6febda77.css.map": "/static/css/main.6febda77.css.map",
-    "main.ae764786.js.map": "/static/js/main.ae764786.js.map"
+    "main.css": "/2022-2-VK-EDU-FS-Frontend-D-Oreshkin/static/css/main.6febda77.css",
+    "main.js": "/2022-2-VK-EDU-FS-Frontend-D-Oreshkin/static/js/main.ae764786.js",
+    "index.html": "/2022-2-VK-EDU-FS-Frontend-D-Oreshkin/index.html",
+    "main.6febda77.css.map": "/2022-2-VK-EDU-FS-Frontend-D-Oreshkin/static/css/main.6febda77.css.map",
+    "main.ae764786.js.map": "/2022-2-VK-EDU-FS-Frontend-D-Oreshkin/static/js/main.ae764786.js.map"
   },
   "entrypoints": [
     "static/css/main.6febda77.css",
