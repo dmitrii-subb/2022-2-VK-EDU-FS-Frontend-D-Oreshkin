@@ -7,8 +7,10 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { NavButtons } from "./pages/NavButtons";
 
 import ChatPage from "./pages/ChatPage/ChatPage.jsx";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import { RequireAuth } from "./hoc/RequireAuth";
 
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { setViewAction } from "./actions/viewAction";
 import { renderNewMessageAction } from "./actions/messageAction";
 
@@ -17,6 +19,8 @@ const centrifuge = new Centrifuge("ws://localhost:8000/connection/websocket");
 const sub = centrifuge.newSubscription("chat");
 
 function App(props) {
+  const user = useSelector((state) => state.activeUserreducer);
+
   function addMessagesToChat(ctx) {
     props.renderNewMessageAction(ctx.data.message);
   }
@@ -49,24 +53,29 @@ function App(props) {
 
   return (
     <>
-      <NavButtons />
+      {user.isLoggedIn ? (
+        <>
+          <NavButtons />
+          {props.view.isDesktop ? (
+            <Routes>
+              <Route exact path="/" element={<SidebarPage />}>
+                <Route path={`/chat/:id`} element={<ChatPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Route>
+            </Routes>
+          ) : (
+            <Routes>
+              <Route exact path="/" element={<SidebarPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
 
-      {props.view.isDesktop ? (
-        <Routes>
-          <Route exact path="/" element={<SidebarPage />}>
-            <Route path={`/chat/:id`} element={<ChatPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
+              <Route path={`/chat/:id`} element={<ChatPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          )}
+        </>
       ) : (
-        <Routes>
-          <Route exact path="/" element={<SidebarPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-
-          <Route path={`/chat/:id`} element={<ChatPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <LoginPage />
       )}
     </>
   );
