@@ -4,3 +4,5 @@ export const ADD_NEW_MESSAGE = "ADD_NEW_MESSAGE";
 export const SET_ACTIVE_CHAT = "SET_ACTIVE_CHAT";
 export const SET_MOBILE_VIEW = "SET_MOBILE_VIEW";
 export const SET_DESKTOP_VIEW = "SET_DESKTOP_VIEW";
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
