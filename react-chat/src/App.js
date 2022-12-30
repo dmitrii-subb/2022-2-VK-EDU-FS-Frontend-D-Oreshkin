@@ -11,8 +11,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { RequireAuth } from "./hoc/RequireAuth";
 
 import { connect, useSelector } from "react-redux";
-
-import { connect } from "react-redux";
 import { setViewAction } from "./actions/viewAction";
 import { renderNewMessageAction } from "./actions/messageAction";
 
