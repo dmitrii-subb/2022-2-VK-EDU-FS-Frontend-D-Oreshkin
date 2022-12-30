@@ -1,20 +1,18 @@
-import styles from "./App.module.css";
 import React from "react";
-import Input from "./components/Input/Input";
-import Output from "./components/Output/Output";
-import Header from "./components/Header/Header";
+import History from "./pages/History";
+import Translate from "./pages/Translate";
+
+import { Routes, Route, Navigate } from "react-router-dom";
 
 class App extends React.Component {
   render() {
     return (
       <>
-        <main className={styles.container2}>
-          <Header />
-          <div className={styles.container}>
-            <Input />
-            <Output />
-          </div>
-        </main>
+        <Routes>
+          <Route path="/" element={<Translate />} />
+          <Route path="/history" element={<History />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </>
     );
   }

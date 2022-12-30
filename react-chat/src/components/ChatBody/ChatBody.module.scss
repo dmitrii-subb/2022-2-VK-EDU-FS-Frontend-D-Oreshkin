@@ -1,0 +1,103 @@
+@import "../../App.module.scss";
+
+@mixin messageStyle($color, $align, $textAlign, $radius){
+    display: flex;
+    flex-direction: column;
+    background-color: $color;
+    padding: 10px;
+    align-self: $align;
+    text-align: $textAlign;
+    border-radius: $radius;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.chat {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    flex-basis: 100px;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    color: $chatBodyMessageTextColor;
+    border-radius: 10px;
+    margin: 8px;
+    word-break:break-all;
+    animation-duration: 1s;
+    animation-name: fadein;
+
+    .messageMeta {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 4px;
+    }
+
+    .messageDate {
+        color: $chatBodyMessageDateColor;
+    }
+    
+    .messageState {
+        color: $chatBodyReadStateColor;
+    }
+    
+    .messageAuthor {
+        color: $chatBodyAuthorColor;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .messageText {
+            font-size: 15px;
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        .messageText {
+            font-size: 25px;
+        }
+    }
+
+    .image {
+        max-width: 400px;
+        border-radius: 10px;
+    }
+    
+}
+
+.right {
+    margin-right: 0px;
+    align-self: flex-end;
+
+    .messageText{
+        @include messageStyle($chatBodyMessageBgLeft, flex-end, end, 16px 0 16px 16px)
+    }
+
+    .messageMeta {
+        justify-content: flex-end;
+    }
+}
+
+.left {
+    margin-left: 0px;
+    align-self: flex-start;
+
+    .messageText{
+        @include messageStyle($chatBodyMessageBgRight, flex-start, start, 0 16px 16px 16px)
+    }
+
+    .messageMeta {
+        justify-content: flex-start;
+    }
+}
+
