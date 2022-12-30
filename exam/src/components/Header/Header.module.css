@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  height: 50px;
+}
+
+.dropdown {
+  width: 50%;
+  align-self: center;
+  text-align: center;
+}
